@@ -25,6 +25,12 @@ namespace [NAMESPACE]
         {
             base.OnHostingFormLoaded(form);
         }
+        
+        // Called for every form of T when its close
+        public virtual void OnHostingFormClosed(T form) 
+        { 
+            base.OnHostingFormLoaded(form);
+        }
 
         // Call when user click on something in the form
         public override void OnBeforePerformingCommand(T form, BeforePerformingCommandEventArgs e)
