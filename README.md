@@ -64,6 +64,10 @@ To program an addon you derive from the `CitaviAddOnEx<T>` class and implement t
 
 If a form is specified that provides inherent add-on support, the class will use it.
 
+## Projects
+
+The [FormatCodeAddon](https://github.com/lutz/FormatCodeAddon) uses this library to extend the MacroEditor and can be viewed for assistance.
+
 ## Disclaimer
 
 >There are no support claims by the company **Swiss Academic Software GmbH**, the provider of **Citavi** or other liability claims for problems or data loss. Any use is at your own risk. All rights to the name **Citavi** and any logos used are owned by **Swiss Academic Software GmbH**.
