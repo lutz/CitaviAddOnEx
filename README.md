@@ -22,7 +22,7 @@ namespace [NAMESPACE]
 {
     public class [CLASSNAME] : CitaviAddOnEx<T>
     {
-        // Call through System.Windows.Forms.Application.Idle event and can used to check if as example button states changed
+        // Called through System.Windows.Forms.Application.Idle event and can used to check if as example button states changed
         public override void OnApplicationIdle(T form)
         {
             base.OnApplicationIdle(form);
@@ -40,13 +40,13 @@ namespace [NAMESPACE]
             base.OnHostingFormLoaded(form);
         }
 
-        // Call when user click on something in the form
+        // Called when user click on something in the form
         public override void OnBeforePerformingCommand(T form, BeforePerformingCommandEventArgs e)
         {
             base.OnBeforePerformingCommand(form, e);
         }
 
-        // Call when application language is changed
+        // Called when application language is changed
         public override void OnLocalizing(T form)
         {
             base.OnLocalizing(form);
