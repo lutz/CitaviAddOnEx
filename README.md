@@ -55,7 +55,7 @@ namespace [NAMESPACE]
 }
 ```
 
-To program an addon you derive from the `CitaviAddOnEx<T>` class and implement the corresponding methods if required. `T` must be a Form derived from the Citavi model provided base class `FormBase`.
+To develop an addon you derive from the `CitaviAddOnEx<T>` class and implement the corresponding methods if required. `T` must be a Form derived from the Citavi model provided base class `FormBase`.
 
 **Example**
 - MainForm
