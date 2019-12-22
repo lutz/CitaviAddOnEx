@@ -43,6 +43,7 @@ namespace SwissAcademic.Citavi.Shell
             {
                 if (form is T t)
                 {
+                    ObserveForm(t, true);
                     OnHostingFormLoaded(t);
                     ChangedToolClickHandler(t);
                     if (t is ProjectShellForm shellForm) ObserveProject(shellForm, true);
@@ -50,15 +51,13 @@ namespace SwissAcademic.Citavi.Shell
             }
         }
 
-        void Forms_Removed(object sender, ListChangedEventArgs args)
+        void Forms_Closed(object sender, FormClosedEventArgs args)
         {
-            foreach (var form in args.Forms)
+            if (sender is T t)
             {
-                if (form is T t)
-                {
-                    OnHostingFormClosed(t);
-                    if (t is ProjectShellForm shellForm) ObserveProject(shellForm, false);
-                }
+                ObserveForm(t, false);
+                OnHostingFormClosed(t);
+                if (t is ProjectShellForm shellForm) ObserveProject(shellForm, false);
             }
         }
 
@@ -74,7 +73,6 @@ namespace SwissAcademic.Citavi.Shell
                 if (start)
                 {
                     Application.OpenForms.AddListChangedEventHandler(Forms_Added, ListChangedType.Added);
-                    Application.OpenForms.AddListChangedEventHandler(Forms_Removed, ListChangedType.Removed);
                     Application.Idle += Application_Idle;
                     Application.ApplicationExit += Application_Exit;
                     Program.Engine.SettingsChanged += Engine_SettingsChanged;
@@ -82,11 +80,22 @@ namespace SwissAcademic.Citavi.Shell
                 else
                 {
                     Application.OpenForms.RemoveListChangedEventHandler(Forms_Added, ListChangedType.Added);
-                    Application.OpenForms.RemoveListChangedEventHandler(Forms_Removed, ListChangedType.Removed);
                     Application.Idle -= Application_Idle;
                     Application.ApplicationExit -= Application_Exit;
                     Program.Engine.SettingsChanged -= Engine_SettingsChanged;
                 }
+            }
+        }
+
+        void ObserveForm(Form form, bool start)
+        {
+            if (start)
+            {
+                form.FormClosed += Forms_Closed;
+            }
+            else
+            {
+                form.FormClosed -= Forms_Closed;
             }
         }
 
