@@ -33,21 +33,19 @@ namespace SwissAcademic.Citavi.Shell
         {
             if (e?.ProjectSettingsType == ProjectSettingsType.ColorScheme && sender is Project project)
             {
-                Application.OpenForms.OfType<ProjectShellForm>().Where(form => form.Project == project).ForEach(form => OnChangingColorScheme(form, form.Project.ProjectSettings.ColorScheme));
+                Application.OpenForms.OfType<T>().Where(form => form.GetProject() == project).ForEach(form => OnChangingColorScheme(form, form.GetProject().ProjectSettings.ColorScheme));
             }
         }
 
         void Forms_Added(object sender, ListChangedEventArgs args)
         {
-            foreach (var form in args.Forms)
+            foreach (var form in args.Forms.OfType<T>())
             {
-                if (form is T t)
-                {
-                    ObserveForm(t, true);
-                    OnHostingFormLoaded(t);
-                    ChangedToolClickHandler(t);
-                    if (t is ProjectShellForm shellForm) ObserveProject(shellForm, true);
-                }
+                ObserveForm(form, true);
+                OnHostingFormLoaded(form);
+                ChangedToolClickHandler(form);
+                if (form.GetProject() is Project project) ObserveProject(project, true);
+
             }
         }
 
@@ -57,7 +55,7 @@ namespace SwissAcademic.Citavi.Shell
             {
                 ObserveForm(t, false);
                 OnHostingFormClosed(t);
-                if (t is ProjectShellForm shellForm) ObserveProject(shellForm, false);
+                if (t.GetProject() is Project project) ObserveProject(project, false);
             }
         }
 
@@ -99,19 +97,19 @@ namespace SwissAcademic.Citavi.Shell
             }
         }
 
-        void ObserveProject(ProjectShellForm shellForm, bool start)
+        void ObserveProject(Project project, bool start)
         {
             try
             {
-                if (shellForm.Project == null || shellForm.Project.IsDisposed) return;
+                if (project == null || project.IsDisposed) return;
 
                 if (start)
                 {
-                    shellForm.Project.SettingsChanged += Project_SettingsChanged;
+                    project.SettingsChanged += Project_SettingsChanged;
                 }
                 else
                 {
-                    shellForm.Project.SettingsChanged -= Project_SettingsChanged;
+                    project.SettingsChanged -= Project_SettingsChanged;
                 }
             }
             catch (Exception)

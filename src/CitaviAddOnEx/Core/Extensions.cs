@@ -18,6 +18,16 @@ namespace SwissAcademic.Citavi.Shell
 
         #region Methods
 
+        public static Project GetProject<T>(this T form) where T : FormBase
+        {
+            if (form is ProjectShellForm projectShellForm) return projectShellForm.Project;
+            return form
+                   .GetType()
+                   .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
+                   .FirstOrDefault(propertyInfo => propertyInfo.PropertyType.Equals(typeof(Project)) && propertyInfo.Name.Equals("Project", StringComparison.OrdinalIgnoreCase))?
+                   .GetValue(form) as Project;
+        }
+
         public static ToolbarsManager GetToolbarsManager<T>(this T form) where T : FormBase => form.GetType().GetField("toolbarsManager", fieldBindingFlags)?.GetValue(form) as ToolbarsManager;
 
         public static IReadOnlyList<Delegate> RemoveEventHandlersFromEvent(this ToolbarsManager toolbarsManager, string eventName)
