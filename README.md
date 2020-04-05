@@ -6,7 +6,7 @@ This repository contains a class library that extends the addon programming mode
 
 ### Prerequisites
 
-The simplest way to program an add-on for Citavi with this library is to include the latest release and ship it with it. Citavi should be installed in the default directory (`C:\Program Files (x86)\Citavi 6`). The Community Edition of Microsoft Visual Studio 2019 can be used as the development environment. 
+The simplest way to program an add-on for Citavi with this library is to include the latest release from [nuget.org](https://www.nuget.org/packages/CitaviAddOnEx/1.0.3) and ship it with it. Citavi should be installed in the default directory (`C:\Program Files (x86)\Citavi 6`). The Community Edition of Microsoft Visual Studio 2019 can be used as the development environment. 
 
 The target framework used under Citavi 6 is the .net Framework 4.6.1.
 
