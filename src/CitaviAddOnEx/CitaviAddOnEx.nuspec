@@ -8,11 +8,13 @@
     <owners>$author$</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
-    <projectUrl>http://project_url_here_or_delete_this_line/</projectUrl>
-    <iconUrl>http://icon_url_here_or_delete_this_line/</iconUrl>
+    <projectUrl>https://github.com/lutz/CitaviAddOnEx</projectUrl>
     <description>$description$</description>
-    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
-    <copyright>Copyright 2020</copyright>
-    <tags>Tag1 Tag2</tags>
+    <releaseNotes>Initial nuget package</releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags>C# Citavi AddOn</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.6.1" />
+    </dependencies>
   </metadata>
 </package>
