@@ -23,7 +23,7 @@ namespace SwissAcademic.Citavi.Shell
             Removed?.Invoke(this, args);
         }
 
-        #endregion
+        #endregion Events
 
         #region Methods
 
@@ -53,7 +53,7 @@ namespace SwissAcademic.Citavi.Shell
             OnRemoved(new ListChangedEventArgs(ListChangedType.Removed, objects));
         }
 
-        #endregion
+        #endregion Methods
     }
 
     internal class ListChangedEventArgs : EventArgs
@@ -72,7 +72,7 @@ namespace SwissAcademic.Citavi.Shell
             Forms = items;
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Properties
 
@@ -82,8 +82,7 @@ namespace SwissAcademic.Citavi.Shell
 
         public object[] Forms { get; }
 
-        #endregion
-
+        #endregion Properties
     }
 
     public enum ListChangedType
@@ -92,5 +91,4 @@ namespace SwissAcademic.Citavi.Shell
         Removed,
         Unknown
     }
-
 }

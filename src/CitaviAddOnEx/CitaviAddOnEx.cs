@@ -15,13 +15,13 @@ namespace SwissAcademic.Citavi.Shell
 
         #endregion
 
-        #region  EventHandler
+        #region EventHandler
 
-        void Application_Idle(object sender, EventArgs e) => Application.OpenForms.OfType<T>().ForEach(form => OnApplicationIdle(form));
+        private void Application_Idle(object sender, EventArgs e) => Application.OpenForms.OfType<T>().ForEach(form => OnApplicationIdle(form));
 
-        void Application_Exit(object sender, EventArgs e) => ObserveApplication(false);
+        private void Application_Exit(object sender, EventArgs e) => ObserveApplication(false);
 
-        void Engine_SettingsChanged(object sender, SettingsEventArgs e)
+        private void Engine_SettingsChanged(object sender, SettingsEventArgs e)
         {
             if (e.Name.Equals(nameof(Program.Engine.Settings.General.UICulture), StringComparison.OrdinalIgnoreCase))
             {
@@ -29,7 +29,7 @@ namespace SwissAcademic.Citavi.Shell
             }
         }
 
-        void Project_SettingsChanged(object sender, ProjectSettingsEventArgs e)
+        private void Project_SettingsChanged(object sender, ProjectSettingsEventArgs e)
         {
             if (e?.ProjectSettingsType == ProjectSettingsType.ColorScheme && sender is Project project)
             {
@@ -37,7 +37,7 @@ namespace SwissAcademic.Citavi.Shell
             }
         }
 
-        void Forms_Added(object sender, ListChangedEventArgs args)
+        private void Forms_Added(object sender, ListChangedEventArgs args)
         {
             foreach (var form in args.Forms.OfType<T>())
             {
@@ -45,11 +45,10 @@ namespace SwissAcademic.Citavi.Shell
                 OnHostingFormLoaded(form);
                 ChangedToolClickHandler(form);
                 if (form.GetProject() is Project project) ObserveProject(project, true);
-
             }
         }
 
-        void Forms_Closed(object sender, FormClosedEventArgs args)
+        private void Forms_Closed(object sender, FormClosedEventArgs args)
         {
             if (sender is T t)
             {
@@ -63,11 +62,10 @@ namespace SwissAcademic.Citavi.Shell
 
         #region Methods
 
-        void ObserveApplication(bool start)
+        private void ObserveApplication(bool start)
         {
             if (IsUnSupportedAddonHostingForm)
             {
-
                 if (start)
                 {
                     Application.OpenForms.AddListChangedEventHandler(Forms_Added, ListChangedType.Added);
@@ -85,7 +83,7 @@ namespace SwissAcademic.Citavi.Shell
             }
         }
 
-        void ObserveForm(Form form, bool start)
+        private void ObserveForm(Form form, bool start)
         {
             if (start)
             {
@@ -97,7 +95,7 @@ namespace SwissAcademic.Citavi.Shell
             }
         }
 
-        void ObserveProject(Project project, bool start)
+        private void ObserveProject(Project project, bool start)
         {
             try
             {
@@ -112,13 +110,12 @@ namespace SwissAcademic.Citavi.Shell
                     project.SettingsChanged -= Project_SettingsChanged;
                 }
             }
-            catch (Exception)
+            catch (Exception ignored)
             {
-
             }
         }
 
-        void ChangedToolClickHandler(T form)
+        private void ChangedToolClickHandler(T form)
         {
             var toolbarsManager = form.GetToolbarsManager();
             var registredDelegates = toolbarsManager?.RemoveEventHandlersFromEvent("ToolClick");
@@ -138,17 +135,29 @@ namespace SwissAcademic.Citavi.Shell
             toolbarsManager?.AddEventHandlerForEvent("ToolClick", clickEventHandler);
         }
 
-        public virtual void OnApplicationIdle(T form) { }
+        public virtual void OnApplicationIdle(T form)
+        {
+        }
 
-        public virtual void OnBeforePerformingCommand(T form, BeforePerformingCommandEventArgs e) { }
+        public virtual void OnBeforePerformingCommand(T form, BeforePerformingCommandEventArgs e)
+        {
+        }
 
-        public virtual void OnChangingColorScheme(T form, ColorScheme colorScheme) { }
+        public virtual void OnChangingColorScheme(T form, ColorScheme colorScheme)
+        {
+        }
 
-        public virtual void OnHostingFormLoaded(T form) { }
+        public virtual void OnHostingFormLoaded(T form)
+        {
+        }
 
-        public virtual void OnHostingFormClosed(T form) { }
+        public virtual void OnHostingFormClosed(T form)
+        {
+        }
 
-        public virtual void OnLocalizing(T form) { }
+        public virtual void OnLocalizing(T form)
+        {
+        }
 
         #endregion
 

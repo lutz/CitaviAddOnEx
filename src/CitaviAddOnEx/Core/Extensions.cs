@@ -10,9 +10,9 @@ namespace SwissAcademic.Citavi.Shell
     {
         #region Fields
 
-        static readonly BindingFlags fieldBindingFlags = BindingFlags.Instance | BindingFlags.NonPublic;
-        static readonly BindingFlags staticEventBindingFlags = fieldBindingFlags | BindingFlags.Static;
-        static readonly BindingFlags staticFieldBindingFlags = BindingFlags.NonPublic | BindingFlags.Static;
+        private static readonly BindingFlags fieldBindingFlags = BindingFlags.Instance | BindingFlags.NonPublic;
+        private static readonly BindingFlags staticEventBindingFlags = fieldBindingFlags | BindingFlags.Static;
+        private static readonly BindingFlags staticFieldBindingFlags = BindingFlags.NonPublic | BindingFlags.Static;
 
         #endregion
 
@@ -32,7 +32,6 @@ namespace SwissAcademic.Citavi.Shell
 
         public static IReadOnlyList<Delegate> RemoveEventHandlersFromEvent(this ToolbarsManager toolbarsManager, string eventName)
         {
-
             var eventsPropertyInfo = toolbarsManager
                                     .GetType()
                                     .GetProperties(staticEventBindingFlags)

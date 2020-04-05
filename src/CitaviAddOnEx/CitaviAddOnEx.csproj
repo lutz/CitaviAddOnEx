@@ -81,7 +81,9 @@
     <Compile Include="Core\ObservableArrayList.cs" />
     <Compile Include="Core\Extensions.cs" />
     <Compile Include="Core\FormsCollectionExtensions.cs" />
-    <Compile Include="Forms\MacroEditorForm.cs" />
+    <Compile Include="Forms\MacroEditorForm\MacroEditorFormCommandbarMenuId.cs" />
+    <Compile Include="Forms\MacroEditorForm\MacroEditorFormExt.cs" />
+    <Compile Include="Forms\MacroEditorForm\MacroEditorFormCommandbar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

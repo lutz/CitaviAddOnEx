@@ -8,7 +8,7 @@ namespace SwissAcademic.Citavi.Shell
     {
         #region Fields
 
-        static readonly BindingFlags fieldBindingFlags = BindingFlags.Instance | BindingFlags.NonPublic;
+        private static readonly BindingFlags fieldBindingFlags = BindingFlags.Instance | BindingFlags.NonPublic;
 
         #endregion
 
@@ -38,6 +38,7 @@ namespace SwissAcademic.Citavi.Shell
                     case ListChangedType.Added:
                         currentInnerList.Added += eventHandler;
                         break;
+
                     case ListChangedType.Removed:
                         currentInnerList.Removed += eventHandler;
                         break;
@@ -68,6 +69,7 @@ namespace SwissAcademic.Citavi.Shell
                     case ListChangedType.Added:
                         currentInnerList.Added -= eventHandler;
                         break;
+
                     case ListChangedType.Removed:
                         currentInnerList.Removed -= eventHandler;
                         break;

@@ -19,21 +19,26 @@ namespace SwissAcademic.Citavi.Shell
 
         sealed protected override void OnApplicationIdle(Form form)
         {
-            if (form is T t) OnApplicationIdle(t);
-            base.OnApplicationIdle(form);
+            if (form is T t)
+            {
+                OnApplicationIdle(t);
+            }
         }
 
         sealed protected override void OnBeforePerformingCommand(BeforePerformingCommandEventArgs args)
         {
-            if (args.Form is T t) OnBeforePerformingCommand(t, args);
-            base.OnBeforePerformingCommand(args);
-
+            if (args.Form is T t)
+            {
+                OnBeforePerformingCommand(t, args);
+            }
         }
 
         sealed protected override void OnChangingColorScheme(Form form, ColorScheme colorScheme)
         {
-            if (form is T t) OnChangingColorScheme(t, colorScheme);
-            base.OnChangingColorScheme(form, colorScheme);
+            if (form is T t)
+            {
+                OnChangingColorScheme(t, colorScheme);
+            }
         }
 
         sealed protected override void OnHostingFormLoaded(Form form)
@@ -43,20 +48,27 @@ namespace SwissAcademic.Citavi.Shell
                 OnHostingFormLoaded(t);
                 form.FormClosed += Form_FormClosed;
             }
-            base.OnHostingFormLoaded(form);
         }
 
         sealed protected override void OnLocalizing(Form form)
         {
-            if (form is T t) OnLocalizing(t);
-            base.OnLocalizing(form);
+            if (form is T t)
+            {
+                OnLocalizing(t);
+            }
         }
 
-        void Form_FormClosed(object sender, FormClosedEventArgs e)
+        private void Form_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (sender is Form form) form.FormClosed -= Form_FormClosed;
+            if (sender is Form form)
+            {
+                form.FormClosed -= Form_FormClosed;
+            }
 
-            if (sender is T t) OnHostingFormClosed(t);
+            if (sender is T t)
+            {
+                OnHostingFormClosed(t);
+            }
         }
 
         #endregion
