@@ -25,31 +25,31 @@ namespace [NAMESPACE]
         // Called through System.Windows.Forms.Application.Idle event and can used to check if as example button states changed
         public override void OnApplicationIdle(T form)
         {
-            base.OnApplicationIdle(form);
+
         }
        
         // Called for every form of T when its load
         public override void OnHostingFormLoaded(T form)
         {
-            base.OnHostingFormLoaded(form);
+           
         }
         
         // Called for every form of T when its close
         public virtual void OnHostingFormClosed(T form) 
         { 
-            base.OnHostingFormLoaded(form);
+           
         }
 
         // Called when user click on something in the form
         public override void OnBeforePerformingCommand(T form, BeforePerformingCommandEventArgs e)
         {
-            base.OnBeforePerformingCommand(form, e);
+           
         }
 
         // Called when application language is changed
         public override void OnLocalizing(T form)
         {
-            base.OnLocalizing(form);
+            
         }
     }
 }
