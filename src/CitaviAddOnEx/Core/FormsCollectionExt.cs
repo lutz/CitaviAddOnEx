@@ -4,15 +4,13 @@ using System.Windows.Forms;
 
 namespace SwissAcademic.Citavi.Shell
 {
-    internal static class FormsCollectionExtensions
+    internal static class FormsCollectionExt
     {
-        #region Fields
+        // Fields
 
         private static readonly BindingFlags fieldBindingFlags = BindingFlags.Instance | BindingFlags.NonPublic;
 
-        #endregion
-
-        #region Methods
+        // Methods
 
         public static void AddListChangedEventHandler(this FormCollection collection, ListChangedEventHandler eventHandler, ListChangedType changedType)
         {
@@ -23,7 +21,7 @@ namespace SwissAcademic.Citavi.Shell
             {
                 var newInnerList = new ObservableArrayList();
 
-                foreach (var item in (innerlist as ArrayList))
+                foreach (var item in innerlist as ArrayList)
                 {
                     newInnerList.Add(item);
                 }
@@ -54,7 +52,7 @@ namespace SwissAcademic.Citavi.Shell
             if (!(innerlist is ObservableArrayList))
             {
                 var newInnerList = new ObservableArrayList();
-                foreach (var item in (innerlist as ArrayList))
+                foreach (var item in innerlist as ArrayList)
                 {
                     newInnerList.Add(item);
                 }
@@ -76,7 +74,5 @@ namespace SwissAcademic.Citavi.Shell
                 }
             }
         }
-
-        #endregion
     }
 }

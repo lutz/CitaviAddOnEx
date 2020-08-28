@@ -5,56 +5,53 @@ using System.Windows.Forms;
 
 namespace SwissAcademic.Citavi.Shell
 {
-    public abstract partial class CitaviAddOnEx<T>
+    public abstract partial class CitaviAddOnEx<TFormBase>
     {
-        #region Properties
+        // Properties
 
-        public sealed override AddOnHostingForm HostingForm => Enum.TryParse(typeof(T).Name, true, out AddOnHostingForm addOnHostingForm)
+        public sealed override AddOnHostingForm HostingForm => Enum.TryParse(typeof(TFormBase).Name, true, out AddOnHostingForm addOnHostingForm)
                                                                ? addOnHostingForm
                                                                : AddOnHostingForm.None;
-
-        #endregion
-
-        #region Methods
+        // Methods
 
         sealed protected override void OnApplicationIdle(Form form)
         {
-            if (form is T t)
+            if (form is TFormBase tFormBase)
             {
-                OnApplicationIdle(t);
+                OnApplicationIdle(tFormBase);
             }
         }
 
         sealed protected override void OnBeforePerformingCommand(BeforePerformingCommandEventArgs args)
         {
-            if (args.Form is T t)
+            if (args.Form is TFormBase tFormBase)
             {
-                OnBeforePerformingCommand(t, args);
+                OnBeforePerformingCommand(tFormBase, args);
             }
         }
 
         sealed protected override void OnChangingColorScheme(Form form, ColorScheme colorScheme)
         {
-            if (form is T t)
+            if (form is TFormBase tFormBase)
             {
-                OnChangingColorScheme(t, colorScheme);
+                OnChangingColorScheme(tFormBase, colorScheme);
             }
         }
 
         sealed protected override void OnHostingFormLoaded(Form form)
         {
-            if (form is T t)
+            if (form is TFormBase tFormBase)
             {
-                OnHostingFormLoaded(t);
+                OnHostingFormLoaded(tFormBase);
                 form.FormClosed += Form_FormClosed;
             }
         }
 
         sealed protected override void OnLocalizing(Form form)
         {
-            if (form is T t)
+            if (form is TFormBase tFormBase)
             {
-                OnLocalizing(t);
+                OnLocalizing(tFormBase);
             }
         }
 
@@ -65,12 +62,10 @@ namespace SwissAcademic.Citavi.Shell
                 form.FormClosed -= Form_FormClosed;
             }
 
-            if (sender is T t)
+            if (sender is TFormBase tFormBase)
             {
-                OnHostingFormClosed(t);
+                OnHostingFormClosed(tFormBase);
             }
         }
-
-        #endregion
     }
 }

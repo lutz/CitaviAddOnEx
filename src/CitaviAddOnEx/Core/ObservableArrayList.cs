@@ -7,25 +7,17 @@ namespace SwissAcademic.Citavi.Shell
 
     internal class ObservableArrayList : ArrayList
     {
-        #region Events
+        // Events
 
         public event ListChangedEventHandler Added;
 
+        protected void OnAdded(ListChangedEventArgs args) => Added?.Invoke(this, args);
+
         public event ListChangedEventHandler Removed;
 
-        protected void OnAdded(ListChangedEventArgs args)
-        {
-            Added?.Invoke(this, args);
-        }
+        protected void OnRemoved(ListChangedEventArgs args) => Removed?.Invoke(this, args);
 
-        protected void OnRemoved(ListChangedEventArgs args)
-        {
-            Removed?.Invoke(this, args);
-        }
-
-        #endregion Events
-
-        #region Methods
+        // Methods
 
         public override int Add(object value)
         {
@@ -52,13 +44,11 @@ namespace SwissAcademic.Citavi.Shell
             base.RemoveRange(index, count);
             OnRemoved(new ListChangedEventArgs(ListChangedType.Removed, objects));
         }
-
-        #endregion Methods
     }
 
     internal class ListChangedEventArgs : EventArgs
     {
-        #region Constructors
+        // Constructors
 
         private ListChangedEventArgs()
         {
@@ -72,17 +62,13 @@ namespace SwissAcademic.Citavi.Shell
             Forms = items;
         }
 
-        #endregion Constructors
-
-        #region Properties
+        // Properties
 
         public new ListChangedEventArgs Empty => new ListChangedEventArgs();
 
         public ListChangedType ChangedType { get; }
 
         public object[] Forms { get; }
-
-        #endregion Properties
     }
 
     public enum ListChangedType

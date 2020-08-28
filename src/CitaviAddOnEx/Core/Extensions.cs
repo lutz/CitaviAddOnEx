@@ -8,15 +8,13 @@ namespace SwissAcademic.Citavi.Shell
 {
     internal static class Extensions
     {
-        #region Fields
+        // Fields
 
         private static readonly BindingFlags fieldBindingFlags = BindingFlags.Instance | BindingFlags.NonPublic;
         private static readonly BindingFlags staticEventBindingFlags = fieldBindingFlags | BindingFlags.Static;
         private static readonly BindingFlags staticFieldBindingFlags = BindingFlags.NonPublic | BindingFlags.Static;
 
-        #endregion
-
-        #region Methods
+        // Methods
 
         public static Project GetProject<T>(this T form) where T : FormBase
         {
@@ -48,8 +46,8 @@ namespace SwissAcademic.Citavi.Shell
 
             var eventKey = eventFieldInfo.GetValue(toolbarsManager);
 
-            var currentEventHandler = eventHandlerList[eventKey] as Delegate;
-            Delegate[] currentRegistredHandlers = currentEventHandler.GetInvocationList();
+            var currentEventHandler = eventHandlerList[eventKey];
+            var currentRegistredHandlers = currentEventHandler.GetInvocationList();
             foreach (var item in currentRegistredHandlers)
             {
                 toolbarsManager.GetType().GetEvent(eventName).RemoveEventHandler(toolbarsManager, item);
@@ -67,7 +65,5 @@ namespace SwissAcademic.Citavi.Shell
                 action.Invoke(item);
             }
         }
-
-        #endregion
     }
 }
