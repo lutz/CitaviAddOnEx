@@ -90,12 +90,14 @@
     <Compile Include="CitaviAddOnEx.Properties.cs">
       <DependentUpon>CitaviAddOnEx.cs</DependentUpon>
     </Compile>
+    <Compile Include="Core\CommandbarMenuFluentEx.cs" />
     <Compile Include="Core\ObservableArrayList.cs" />
     <Compile Include="Core\Extensions.cs" />
     <Compile Include="Core\FormsCollectionExt.cs" />
-    <Compile Include="Forms\MacroEditorForm\MacroEditorFormCommandbarMenuId.cs" />
-    <Compile Include="Forms\MacroEditorForm\MacroEditorFormExt.cs" />
-    <Compile Include="Forms\MacroEditorForm\MacroEditorFormCommandbar.cs" />
+    <Compile Include="Core\CommandbarFluentEx.cs" />
+    <Compile Include="Core\MacroEditorForm\MacroEditorFormCommandbarMenuId.cs" />
+    <Compile Include="Core\MacroEditorForm\MacroEditorFormExt.cs" />
+    <Compile Include="Core\MacroEditorForm\MacroEditorFormCommandbar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
