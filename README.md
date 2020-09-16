@@ -64,6 +64,10 @@ To develop an addon you derive from the `CitaviAddOnEx<T>` class and implement t
 
 If a form is specified that provides inherent add-on support, the class will use it.
 
+## Wiki
+
+Some extra informations you will find in the [wiki](../..//wiki)
+
 ## Projects
 
 The [FormatCodeAddon](https://github.com/lutz/FormatCodeAddon) uses this library to extend the MacroEditor and can be viewed for assistance.
