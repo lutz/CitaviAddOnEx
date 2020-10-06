@@ -97,6 +97,9 @@
     <Compile Include="Core\CommandbarFluentEx.cs" />
     <Compile Include="Core\MacroEditorForm\MacroEditorFormCommandbarMenuId.cs" />
     <Compile Include="Core\MacroEditorForm\MacroEditorFormExt.cs" />
+    <Compile Include="Core\MacroEditorForm\MacroEditorFormMenuCommandbar.cs" />
+    <Compile Include="Core\MacroEditorForm\MacroEditorFormCommandbarId.cs" />
+    <Compile Include="Core\MacroEditorForm\MacroEditorFormCommandbarManager.cs" />
     <Compile Include="Core\MacroEditorForm\MacroEditorFormCommandbar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
