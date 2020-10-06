@@ -76,12 +76,17 @@ namespace SwissAcademic.Citavi.Shell
                         del.DynamicInvoke(sender, args);
                     }
                 }
+                OnAfterPerformingCommand(tFormBase, AfterPerformingCommandEventArgs.Of(e));
             };
 
             toolbarsManager?.AddEventHandlerForEvent("ToolClick", clickEventHandler);
         }
 
         public virtual void OnApplicationIdle(TFormBase form)
+        {
+        }
+
+        public virtual void OnAfterPerformingCommand(TFormBase form, AfterPerformingCommandEventArgs e)
         {
         }
 
