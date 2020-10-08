@@ -1,13 +1,4 @@
-﻿using SwissAcademic;
-using SwissAcademic.Citavi;
-using SwissAcademic.Citavi.Shell;
-using SwissAcademic.Controls;
-using SwissAcademic.Drawing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using SwissAcademic.Citavi.Shell;
 
 namespace TestAddon
 {
@@ -15,7 +6,7 @@ namespace TestAddon
     {
         public override void OnHostingFormLoaded(MacroEditorForm form)
         {
-          
+
         }
     }
 }
